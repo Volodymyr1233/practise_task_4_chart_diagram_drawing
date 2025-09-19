@@ -11,8 +11,8 @@ namespace StatisticsWebApp.Models
         {
             ScottPlot.Plot myPlot = new();
 
-            
 
+            int sum_of_elements = stats_numbers.Sum();
             var slices = new List<PieSlice>();
 
 
@@ -23,15 +23,16 @@ namespace StatisticsWebApp.Models
 
               
                 if (usedColors.Contains(randomColor))
-                    continue; 
+                    continue;
 
-                slices.Add(new PieSlice() { Value = stats_numbers[i], FillColor = randomColor });
+                int percentage_rate = (int)Math.Round((double)stats_numbers[i] / sum_of_elements * 100, 0);
+                slices.Add(new PieSlice() { Value = stats_numbers[i], FillColor = randomColor, Label=$"{percentage_rate}%", LegendText=$"Firma nr{i+1}" });
                 usedColors.Add(randomColor);
                 i++;
             }
             var pie = myPlot.Add.Pie(slices);
             pie.ExplodeFraction = 0;
-            pie.SliceLabelDistance = 1.4;
+            pie.SliceLabelDistance = 1.2;
 
             myPlot.ShowLegend();
 
@@ -40,7 +41,7 @@ namespace StatisticsWebApp.Models
 
             usedColors.Clear();
 
-            myPlot.SavePng("wwwroot/images/demo.png", 600, 400);
+            myPlot.SavePng("wwwroot/images/demo.png", 700, 500);
 
         }
     }

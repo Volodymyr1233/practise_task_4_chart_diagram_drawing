@@ -32,7 +32,7 @@ namespace StatisticsWebApp.Controllers
         public IActionResult SaveToDb()
         {
             dbConnection.InsertDiagram(chart_numbers);
-            TempData["DBSuccess"] = "Chart saved to database successfully!";
+            TempData["DBSuccess"] = "Wykres jest zapisany do bazy!";
             return RedirectToAction("Index");
         }
         public IActionResult Privacy()
