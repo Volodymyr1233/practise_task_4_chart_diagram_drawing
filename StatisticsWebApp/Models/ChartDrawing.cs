@@ -41,7 +41,7 @@ namespace StatisticsWebApp.Models
 
             usedColors.Clear();
 
-            myPlot.SavePng("wwwroot/images/demo.png", 700, 500);
+            myPlot.SavePng(GlobalImagePath.img_path, 700, 500);
 
         }
     }

@@ -19,7 +19,7 @@ namespace StatisticsWebApp.Models
             {
                 connection.Open();
                 string stats_nums_str = string.Join(",", stats_nums);
-                byte[] image_bytes = File.ReadAllBytes("wwwroot/images/demo.png");
+                byte[] image_bytes = File.ReadAllBytes(GlobalImagePath.img_path);
                 string query = "INSERT INTO Charts (Integers_list, Img) VALUES (@stats_nums, @img)";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

@@ -7,7 +7,7 @@
         <div class="w-100" style="display: flex; justify-content: space-between">
             <div class="card shadow" style="width: 30%; height: 450px;">
                 <div class="card-header bg-primary text-white text-center p-2">
-                    <h1 class="display-6 mb-0" style="margin-bottom:0;">Statistics Numbers</h1>
+                    <h1 class="display-6 mb-0" style="margin-bottom:0;">Statystyka</h1>
                 </div>
                 <div class="card-body" style="overflow-y: auto;">
                     <form id="num_form" asp-action="sendStats" method="post" class="text-center">
@@ -15,7 +15,7 @@
                             <thead class="table-dark" style="margin-top:0;">
                                 <tr>
                                     <th style="position: sticky; top: -15px">Id</th>
-                                    <th style="position: sticky; top: -15px">Number</th>
+                                    <th style="position: sticky; top: -15px">Liczba</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,11 +32,8 @@
                 </div>
             </div>
             <div style="width: 55%; position: relative" id="main-side-container" class="text-center">
-                <div id="img-container">
-                    <img src="~/images/demo.png" alt="no diagram" style="width: 100%; height: 100%; object-fit: cover;"/>
-                </div>
-                <form asp-action="saveToDb" method="post">
-                    <button type="submit" class='btn btn-primary'>Zapisz do bazy</button>
+                <div id="img-container"></div>
+                <form asp-action="saveToDb" method="post" id="btn-form">
                 </form>
                 @{
                     if (TempData["DBSuccess"] != null)

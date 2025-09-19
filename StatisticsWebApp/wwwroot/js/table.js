@@ -1,7 +1,7 @@
 ﻿
 document.addEventListener("DOMContentLoaded", function () {
     const table = document.getElementById("num_table");
-
+    
     table.addEventListener("keydown", function (event) {
         if (event.target.tagName.toLowerCase() === "input" && event.key === "Enter") {
             event.preventDefault();
@@ -21,6 +21,26 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
+
+    const img_container = document.getElementById("img-container");
+    const btn_form = document.getElementById("btn-form");
+    const img = new Image();
+    img.src = "/images/demo.png";
+    img.style = "width: 100%; height: 100%; object-fit: cover;";
+    img.alt = "Demo Image";
+
+    img.onload = function () {
+        const form_button = document.createElement("button");
+        form_button.type = "submit";
+        form_button.className = "btn btn-primary";
+        form_button.innerText = "Zapisz do bazy";
+        img_container.appendChild(img);
+        btn_form.appendChild(form_button);
+    }
+
+    img.onerror = function () {
+        img_container.innerHTML = "<h1>Zrób swój pierwszy wykres!</h1>";
+    }
 });
 
 
