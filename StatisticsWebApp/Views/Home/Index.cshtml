@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="w-100" style="display: flex; justify-content: space-between">
+            <div class="card shadow" style="width: 30%;">
+                <div class="card-header bg-primary text-white text-center p-2">
+                    <h1 class="display-6 mb-0" style="margin-bottom:0;">Statistics Numbers</h1>
+                </div>
+                <div class="card-body" style="height: 400px; overflow-y: auto;">
+                    <form id="num_form" asp-action="sendStats" method="post" class="text-center">
+                        <table id="num_table" class="table  table-bordered align-middle mb-0">
+                            <thead class="table-dark" style="margin-top:0;">
+                                <tr>
+                                    <th style="position: sticky; top: -15px">Id</th>
+                                    <th style="position: sticky; top: -15px">Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <input type="number" name="stats_numbers" id="number1" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="submit" id="calculateBtn" class="btn btn-primary m-2">Create circle</button>
+                    </form> 
+                </div>
+            </div>
+            <div style="width: 60%" id="main-side-container" class="text-center">
+                <div id="img-container">
+                    <img src="~/images/demo.png" alt="no diagram" style="width: 100%; height: 100%; object-fit: cover;"/>
+                </div>
+                <form asp-action="saveToDb" method="post">
+                    <button type="submit" class='btn btn-primary'>Zapisz do bazy</button>
+                </form>
+            </div>
+            @{
+                if (TempData["DBSuccess"] != null)
+                {
+                    <div class="alert alert-info" role="alert" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);">
+                        @TempData["DBSuccess"]
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/table.js"></script>
+
